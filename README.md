@@ -14,6 +14,12 @@
   <b>🌐 <a href="https://ai.zbjh.top">ai.zbjh.top</a> — 免费在线体验</b>
 </p>
 
+<p align="center">
+  <img src="docs/screenshots/portal.png" width="30%" />
+  <img src="docs/screenshots/desktop-boy.png" width="30%" />
+  <img src="docs/screenshots/desktop-boy2.png" width="30%" />
+</p>
+
 ---
 
 ## 💕 小灵 · AI 女友
