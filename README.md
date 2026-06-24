@@ -14,8 +14,27 @@
   <b>🌐 <a href="https://ai.zbjh.top">ai.zbjh.top</a> — 免费在线体验</b>
 </p>
 
+## 📸 预览
+
 <p align="center">
-  <img src="docs/screenshots/portal.png" width="30%" />
+  <b>🏠 门户页</b><br/>
+  <img src="docs/screenshots/portal.png" width="60%" />
+</p>
+
+<p align="center">
+  <b>💕 小灵 · AI 女友</b><br/>
+  <img src="docs/screenshots/xiaoling-chat.png" width="45%" />
+  <img src="docs/screenshots/xiaoling-voice.png" width="45%" />
+</p>
+
+<p align="center">
+  <b>🌟 景琛 · AI 男友</b><br/>
+  <img src="docs/screenshots/jingchen-chat.png" width="45%" />
+  <img src="docs/screenshots/jingchen-voice.png" width="45%" />
+</p>
+
+<p align="center">
+  <b>🖥️ 桌面悬浮窗</b><br/>
   <img src="docs/screenshots/desktop-boy.png" width="30%" />
   <img src="docs/screenshots/desktop-boy2.png" width="30%" />
 </p>
