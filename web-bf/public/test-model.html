@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>VRM Test</title>
+<script type="importmap">
+{ "imports": {
+    "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+}}
+</script>
+</head><body style="margin:0;background:#fef2f8;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif">
+<h2 style="color:#ec4899">VRM Model Test</h2>
+<div id="status" style="margin:10px;color:#666">Loading...</div>
+<canvas id="c" style="width:340px;height:450px;border-radius:20px"></canvas>
+<script type="module">
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { VRMLoaderPlugin, VRMUtils } from "https://unpkg.com/@pixiv/three-vrm@3.5.3/lib/three-vrm.module.js";
+
+const s = document.getElementById("status");
+s.textContent = "Loading 3D engine...";
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xfef2f8);
+const cam = new THREE.PerspectiveCamera(30, 340/450, 0.05, 15);
+cam.position.set(0, 1.3, 2.2);
+cam.lookAt(0, 1.0, 0);
+
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById("c"), alpha: true, antialias: true});
+renderer.setSize(340, 450);
+scene.add(new THREE.AmbientLight(0xffffff, 2.0));
+scene.add(new THREE.DirectionalLight(0xfff0f5, 2.5));
+
+s.textContent = "Downloading model...";
+const loader = new GLTFLoader();
+loader.register(p => new VRMLoaderPlugin(p));
+
+try {
+  const gltf = await loader.loadAsync("/models/iris.vrm", p => {
+    if (p.total) s.textContent = `Downloading: ${Math.round(p.loaded/1024/1024)}MB / ${Math.round(p.total/1024/1024)}MB`;
+  });
+  s.textContent = "Setting up model...";
+  const vrm = gltf.userData.vrm;
+  VRMUtils.rotateVRM0(vrm);
+
+  const bb = new THREE.Box3().setFromObject(vrm.scene);
+  const h = bb.max.y - bb.min.y;
+  if (h > 0) vrm.scene.scale.setScalar(Math.min(1.6/h, 2.5));
+  vrm.scene.position.y = -(bb.max.y+bb.min.y)/2 * vrm.scene.scale.y + 0.85;
+  scene.add(vrm.scene);
+
+  s.textContent = "OK! Model loaded successfully!";
+  s.style.color = "green";
+
+  function tick() { requestAnimationFrame(tick); vrm.update(0.016); renderer.render(scene, cam); }
+  tick();
+} catch(e) {
+  s.textContent = "ERROR: " + (e.message || e);
+  s.style.color = "red";
+  console.error(e);
+}
+</script>
+</body></html>

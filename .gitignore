@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+dist/
+*.vrm
+*.gguf
+*.bin
+.env
+.env.local
+.DS_Store

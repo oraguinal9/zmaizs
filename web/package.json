@@ -1,0 +1,31 @@
+{
+  "name": "virtual-gf",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3091",
+    "build": "next build",
+    "start": "next start -p 3091"
+  },
+  "dependencies": {
+    "@capacitor-community/speech-recognition": "^7.0.1",
+    "@capacitor-community/text-to-speech": "^8.0.0",
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
+    "@capgo/capacitor-native-audio": "^8.4.7",
+    "@pixiv/three-vrm": "^3.5.3",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.170.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
